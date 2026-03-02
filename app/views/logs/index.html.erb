@@ -1,12 +1,22 @@
 <h1>DailyQuestLog</h1>
 
 <% @logs.each do |log| %>
+  <hr>
   <div>
     <p><strong>Content:</strong> <%= log.content %></p>
     <p><strong>Duration:</strong> <%= log.duration %></p>
     <p><strong>Category:</strong> <%= log.category %></p>
     <p><strong>Memo:</strong> <%= log.memo %></p>
     <p><strong>Date:</strong> <%= log.log_date %></p>
-    <hr>
+  </div>
+  <div>
+    <p>
+      <%= link_to "詳細", log_path(log) %> |
+      <%= link_to "編集", edit_log_path(log) %> |
+      <%= link_to "削除", log_path(log),
+          data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+    </p>
   </div>
 <% end %>
+
+<h2>ケイちゃんかわいい～！</h2>
