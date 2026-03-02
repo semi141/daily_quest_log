@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_02_22_073028) do
+ActiveRecord::Schema[7.2].define(version: 2026_03_02_095901) do
   create_table "logs", force: :cascade do |t|
     t.text "content"
     t.integer "duration"
@@ -19,5 +19,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_22_073028) do
     t.date "log_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.text "design"
+    t.text "study"
+    t.text "implementation"
   end
 end
