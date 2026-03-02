@@ -1,0 +1,22 @@
+<h1><%= @log.title %></h1>
+
+<p>
+  日付:<%= @log.log_date %><br>
+  学習時間:<%= @log.duration %> 分
+</p>
+
+<hr>
+
+<h2>設計</h2>
+<p><%= simple_format(@log.design) %></p>
+
+<h2>座学</h2>
+<p><%= simple_format(@log.study) %></p>
+
+<h2>実装</h2>
+<p><%= simple_format(@log.implementation) %></p>
+
+<hr>
+
+<h3>メモ</h3>
+<p><%= simple_format(@log.memo) %></p>

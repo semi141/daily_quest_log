@@ -18,6 +18,10 @@ class LogsController < ApplicationController
     @logs = Log.all
   end
 
+  def show
+    @log = Log.find(params[:id])
+  end
+
   def edit
     @log = Log.find(params[:id])
   end
