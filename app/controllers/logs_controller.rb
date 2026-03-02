@@ -26,7 +26,7 @@ class LogsController < ApplicationController
     @log = Log.find(params[:id])
     
     if @log.update(log_params)
-      redirect_to @log
+      redirect_to logs_path
     else
       render :edit
     end
