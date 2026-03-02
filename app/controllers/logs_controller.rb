@@ -41,7 +41,15 @@ class LogsController < ApplicationController
   private
 
   def log_params
-    params.require(:log).permit(:content, :duration, :category, :memo, :log_date)
+    params.require(:log).permit(
+      :title,
+      :log_date,
+      :duration,
+      :design,
+      :study,
+      :implementation,
+      :memo
+    )
   end
 
 end

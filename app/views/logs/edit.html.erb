@@ -1,19 +1,28 @@
 <%= form_with model: @log  do |f| %>
 
   <div>
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
   </div>
 
   <div>
-    <%= f.label :duration %><br>
+    <%= f.label :log_date, "日付" %><br>
+    <%= f.date_field :log_date %>
+  </div>
+
+  <div>
+    <%= f.label :duration, "学習した時間" %><br>
     <%= f.number_field :duration %>
   </div>
 
-  <div>
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </div>
+  <h3><%= f.label :design, "設計" %></h3>
+  <%= f.text_area :design %>
+
+  <h3><%= f.label :study, "座学" %></h3>
+  <%= f.text_area :study %>
+
+  <h3><%= f.label :implementation, "実装" %></h3>
+  <%= f.text_area :implementation %>
 
   <div>
     <%= f.label :memo %><br>
@@ -21,12 +30,7 @@
   </div>
 
   <div>
-    <%= f.label :log_date %><br>
-    <%= f.date_field :log_date %>
-  </div>
-
-  <div>
-    <%= f.submit "更新する" %><br>
+    <%= f.submit "EXPを獲得する" %><br>
   </div>
 
   <% end %>
