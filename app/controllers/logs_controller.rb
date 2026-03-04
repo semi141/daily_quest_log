@@ -8,6 +8,8 @@ class LogsController < ApplicationController
     @log = Log.new(log_params)
 
     if @log.save
+      tag_list = params[:log][:tag_names].to_s.split(",")
+      save_tags(tag_list)
       redirect_to logs_path
     else
       render :new
@@ -30,6 +32,8 @@ class LogsController < ApplicationController
     @log = Log.find(params[:id])
     
     if @log.update(log_params)
+      tag_list = params[:log][:tag_names].to_s.split(",")
+      save_tags(tag_list)
       redirect_to logs_path
     else
       render :edit
@@ -52,8 +56,16 @@ class LogsController < ApplicationController
       :design,
       :study,
       :implementation,
-      :memo
+      :memo,
+      :tag_names
     )
+  end
+
+  def save_tags(tag_list)
+    tag_list.uniq.each do |tag_name|
+      tag = Tag.find_or_create_by(name: tag_name)
+      @log.tags << tag
+    end
   end
 
 end

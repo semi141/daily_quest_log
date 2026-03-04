@@ -24,3 +24,8 @@
 
 <h3>メモ</h3>
 <p><%= simple_format(@log.memo) %></p>
+
+<p>タグ:</p>
+<% @log.tags.each do |tag| %>
+  <span><%= tag.name %></span>
+<% end %>
