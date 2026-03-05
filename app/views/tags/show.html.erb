@@ -1,2 +1,7 @@
-<h1>Tags#show</h1>
-<p>Find me in app/views/tags/show.html.erb</p>
+<h1><%= @tag.name %> のログ</h1>
+
+<% @logs.each do |log| %>
+  <div>
+    <%= link_to log.title, log_path(log) %>
+  </div>
+<% end %>
