@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "tags/show"
   resources :logs
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
