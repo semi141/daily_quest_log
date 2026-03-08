@@ -1,4 +1,5 @@
 <div class="container mt-4">
+<%= link_to "新しくセーブする", new_log_path, class: "btn btn-success" %>
   <div class="row">
     <% @logs.each do |log| %>
       <div class="col-md-4 mb-4">
@@ -22,10 +23,20 @@
             </p>
 
             <div class="mb-3">
-              <span class="badge text-bg-secondary">タグ予定</span>
+              <% log.tags.each do |tag| %>
+                <%= link_to "##{tag.name}",
+                            tag_path(tag),
+                            class: "badge text-bg-secondary text-decoration-none me-1" %>
+              <% end %>
             </div>
 
-            <%= link_to "詳細を見る", log_path(log), class: "btn btn-primary" %>
+            <%= link_to "セーブデータをロードする", log_path(log), class: "btn btn-primary" %>
+            <%= link_to "セーブを書き換える", edit_log_path(log), class: "btn btn-success" %>
+            <%= link_to "セーブデータを削除する", 
+                        log_path(log),
+                        data: { turbo_method: :delete,
+                                turbo_confirm: "削除したセーブデータは戻りません。それでもよろしいですか？" },
+                        class: "btn btn-danger" %>
           </div>
         </div>
       </div>
