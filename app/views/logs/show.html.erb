@@ -25,7 +25,7 @@
 <h3>メモ</h3>
 <p><%= simple_format(@log.memo) %></p>
 
-<p>タグ:</p>
+<h4>タグ</h4>
 <% @log.tags.each do |tag| %>
   <span><%= link_to tag.name, tag_path(tag) %></span>
 <% end %>
