@@ -2,7 +2,7 @@
 
 <p>
   日付:<%= @log.log_date %><br>
-  学習時間:<%= @log.duration %> 分
+  学習時間:<%= format_duration(@log.duration) %>
 </p>
 
 <hr>
