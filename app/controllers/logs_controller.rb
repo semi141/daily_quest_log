@@ -17,7 +17,14 @@ class LogsController < ApplicationController
   end
 
   def index
-    @logs = Log.all
+    if params[:keyword].present?
+      @logs = Log.where(
+        "title LIKE :keyword OR design LIKE :keyword OR study LIKE :keyword OR implementation LIKE :keyword",
+        keyword: "%#{params[:keyword]}%"
+      ).order(log_date: :desc)
+    else
+      @logs = Log.order(log_date: :desc)
+    end
   end
 
   def show

@@ -1,5 +1,21 @@
 <div class="container mt-4">
+
 <%= link_to "新しくセーブする", new_log_path, class: "btn btn-success" %>
+
+<%= form_with url: logs_path, method: :get, local: true, class: "mb-4" do |f| %>
+  <div class="row g-2">
+    <div class="col-md-10">
+      <%= f.text_field :keyword,
+                        value: params[:keyword],
+                        class: "form-control",
+                        placeholder: "タイトル・設計・座学・実装で検索" %>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit "セーブデータを検索", class: "btn btn-primary w-100" %>
+    </div>
+  </div>
+<% end %>
+
   <div class="row">
     <% @logs.each do |log| %>
       <div class="col-md-4 mb-4">
