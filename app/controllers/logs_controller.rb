@@ -27,6 +27,10 @@ class LogsController < ApplicationController
     end
 
     @total_minutes = Log.sum(:duration)
+    @today_minutes = Log.where(log_date: Date.current).sum(:duration)
+    @week_minutes = Log.where(log_date: Date.current.beginning_of_week..Date.current.end_of_week).sum(:duration)
+    @month_minutes = Log.where(log_date: Date.current.beginning_of_month..Date.current.end_of_month).sum(:duration)
+
     @level = 29
     @current_exp = 80
   end
