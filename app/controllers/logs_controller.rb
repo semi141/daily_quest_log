@@ -25,6 +25,10 @@ class LogsController < ApplicationController
     else
       @logs = Log.order(log_date: :desc)
     end
+
+    @total_minutes = Log.sum(:duration)
+    @level = 29
+    @current_exp = 80
   end
 
   def show

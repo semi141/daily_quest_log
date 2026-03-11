@@ -1,0 +1,16 @@
+.status-header {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.exp-bar {
+  width: 200px;
+  height: 10px;
+  background: #ddd;
+}
+
+.exp-fill {
+  width: 80%;
+  height: 100%;
+  background: #4CAF50;
+}
