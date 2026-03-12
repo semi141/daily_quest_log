@@ -31,8 +31,23 @@ class LogsController < ApplicationController
     @week_minutes = Log.where(log_date: Date.current.beginning_of_week..Date.current.end_of_week).sum(:duration)
     @month_minutes = Log.where(log_date: Date.current.beginning_of_month..Date.current.end_of_month).sum(:duration)
 
-    @level = 29
-    @current_exp = 80
+    @total_xp = Log.sum(:duration)
+
+    level = 1
+
+    exp = @total_xp
+
+    while exp >= (100 + level * 20)
+      exp -= (100 + level * 20)
+      level += 1
+    end
+
+    @level = level
+    @current_exp = exp
+
+    @next_level_xp = 100 + level * 20
+    @remaining_xp = @next_level_xp - exp
+    @exp_percentage = (@current_exp.to_f / @next_level_xp) * 100
   end
 
   def show
