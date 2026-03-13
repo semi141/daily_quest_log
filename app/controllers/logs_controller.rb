@@ -8,6 +8,7 @@ class LogsController < ApplicationController
     @log = Log.new(log_params)
 
     if @log.save
+      gained_xp = 10
       tag_list = params[:log][:tag_names].to_s.split(",")
       save_tags(tag_list)
       redirect_to logs_path
@@ -31,7 +32,28 @@ class LogsController < ApplicationController
     @week_minutes = Log.where(log_date: Date.current.beginning_of_week..Date.current.end_of_week).sum(:duration)
     @month_minutes = Log.where(log_date: Date.current.beginning_of_month..Date.current.end_of_month).sum(:duration)
 
-    @total_xp = Log.sum(:duration)
+    streak_logs = Log.order(created_at: :desc)
+    dates = streak_logs.map { |log| log.created_at.to_date }.uniq
+
+    streak = 0
+    current_day = Date.current
+
+    dates.each do |date|
+      if date == current_day
+        streak += 1
+        current_day -= 1
+      else
+        break
+      end
+    end
+
+    streak_bonus = (streak / 7) * 25
+
+    study_xp = Log.sum(:duration)
+    create_xp = Log.count * 10
+    @total_xp = study_xp + create_xp
+
+    @total_xp = study_xp + create_xp + streak_bonus
 
     level = 1
 
