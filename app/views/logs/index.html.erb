@@ -1,10 +1,11 @@
 <div class="container mt-4">
 
 <div class="study-summary">
-  <p>プレイ時間: <%= format_duration(@total_minutes) %></p>
-  <p>今月: <%= format_duration(@month_minutes) %></p>
-  <p>今週: <%= format_duration(@week_minutes) %></p>
-  <p>今日: <%= format_duration(@today_minutes) %></p>
+  <p>
+    <%= link_to stats_logs_path do %>
+      プレイ時間: <%= format_duration(@total_minutes) %>
+    <% end %>
+  </p>
 </div>
 
 <div class="status-header">
