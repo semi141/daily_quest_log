@@ -1,6 +1,29 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="study-summary">
   <p>プレイ時間: <%= format_duration(@total_minutes) %></p>
   <p>今月: <%= format_duration(@month_minutes) %></p>
   <p>今週: <%= format_duration(@week_minutes) %></p>
   <p>今日: <%= format_duration(@today_minutes) %></p>
 </div>
+
+<canvas id="studyChart"></canvas>
+
+<script>
+  const ctx = document.getElementById('studyChart')
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['今日', '今週', '今月'],
+      datasets: [{
+        label: '学習時間',
+        data: [
+          <%= @today_minutes %>,
+          <%= @week_minutes %>,
+          <%= @month_minutes %>
+        ]
+      }]
+    }
+  });
+</script>

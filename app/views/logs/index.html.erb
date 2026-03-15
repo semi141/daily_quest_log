@@ -2,7 +2,7 @@
 
 <div class="study-summary">
   <p>
-    <%= link_to stats_logs_path do %>
+    <%= link_to stats_logs_path, data: { turbo: false } do %>
       プレイ時間: <%= format_duration(@total_minutes) %>
     <% end %>
   </p>
