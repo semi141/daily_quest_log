@@ -122,8 +122,8 @@ class LogsController < ApplicationController
 
   def save_tags(tag_list)
     tag_list.uniq.each do |tag_name|
-      tag = Tag.find_or_create_by(name: tag_name)
-      @log.tags << tag
+      tag = Tag.find_or_create_by(name: tag_name.strip)
+      @log.tags << tag unless @log.tags.include?(tag)
     end
   end
 
