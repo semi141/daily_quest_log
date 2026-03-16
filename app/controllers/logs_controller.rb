@@ -78,6 +78,7 @@ class LogsController < ApplicationController
 
   def edit
     @log = Log.find(params[:id])
+    @log.tag_names = @log.tags.pluck(:name).join(",")
   end
 
   def update

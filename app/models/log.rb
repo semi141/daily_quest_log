@@ -3,5 +3,4 @@ class Log < ApplicationRecord
   has_many :tags, through: :log_tags
 
   attr_accessor :tag_names
-  
 end
