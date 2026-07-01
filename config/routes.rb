@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "logs#index"
+  
   get "logs/stats", to: "logs#stats", as: :stats_logs
 
   resources :logs
